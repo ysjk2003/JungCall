@@ -1,0 +1,15 @@
+.button {
+    border-radius: 4px;
+    background-color: rgb(var(--brand-color));
+    padding: 8px 16px;
+    color: white;
+    font-size: 1rem;
+
+    &:hover {
+        background-color: #ff9932;
+    }
+
+    &:active {
+        background-color: #e57300;
+    }
+}
