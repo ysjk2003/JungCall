@@ -1,17 +1,17 @@
-import React from 'react';
-import {StackScreenProps} from '@react-navigation/stack';
-import {Dimensions, SafeAreaView, StyleSheet, Text, View} from 'react-native';
-import {AuthStackParamList} from '../../navigation/stack/AuthStackNavigator';
-import {authNaviagtions} from '../../constants/navigations';
-import CustomButton from '../../components/CustomButton';
-import {colors} from '../../constants';
+import React from "react";
+import { StackScreenProps } from "@react-navigation/stack";
+import { Dimensions, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { AuthStackParamList } from "../../navigation/stack/AuthStackNavigator";
+import { authNavigations } from "../../constants/navigations";
+import CustomButton from "../../components/CustomButton";
+import { colors } from "../../constants";
 
 type AuthHomeScreenProps = StackScreenProps<
   AuthStackParamList,
-  typeof authNaviagtions.AUTH_HOME
+  typeof authNavigations.AUTH_HOME
 >;
 
-function AuthHomeScreen({navigation}: AuthHomeScreenProps) {
+function AuthHomeScreen({ navigation }: AuthHomeScreenProps) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.imageContainer}>
@@ -25,12 +25,12 @@ function AuthHomeScreen({navigation}: AuthHomeScreenProps) {
       <View style={styles.buttonContainer}>
         <CustomButton
           label="로그인하기"
-          onPress={() => navigation.navigate(authNaviagtions.LOGIN)}
+          onPress={() => navigation.navigate(authNavigations.LOGIN)}
         />
         <CustomButton
           label="회원가입하기"
           variant="outlined"
-          onPress={() => navigation.navigate(authNaviagtions.SIGNUP)}
+          onPress={() => navigation.navigate(authNavigations.SIGNUP)}
         />
       </View>
     </SafeAreaView>
@@ -40,17 +40,17 @@ function AuthHomeScreen({navigation}: AuthHomeScreenProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
     marginHorizontal: 30,
     marginVertical: 30,
   },
   imageContainer: {
     flex: 1.5,
-    width: Dimensions.get('screen').width / 2,
+    width: Dimensions.get("screen").width / 2,
   },
   image: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
   appName: {
     fontSize: 54,
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
     gap: 10,
   },
 });

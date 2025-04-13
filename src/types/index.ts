@@ -11,7 +11,7 @@ type CompanyList = Company[];
 type Equipment = {
   id: string;
   name: string;
-  description?: string;
+  pricePerHour?: string;
   image?: string;
 };
 

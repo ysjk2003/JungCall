@@ -1,14 +1,14 @@
-import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import AuthHomeScreen from '../../screens/auth/AuthHomeScreen';
-import LoginScreen from '../../screens/auth/LoginScreen';
-import SignScreen from '../../screens/auth/SignScreen';
-import {authNaviagtions} from '../../constants';
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import AuthHomeScreen from "../../screens/auth/AuthHomeScreen";
+import LoginScreen from "../../screens/auth/LoginScreen";
+import SignScreen from "../../screens/auth/SignScreen";
+import { authNavigations } from "../../constants";
 
 export type AuthStackParamList = {
-  [authNaviagtions.AUTH_HOME]: undefined;
-  [authNaviagtions.LOGIN]: undefined;
-  [authNaviagtions.SIGNUP]: undefined;
+  [authNavigations.AUTH_HOME]: undefined;
+  [authNavigations.LOGIN]: undefined;
+  [authNavigations.SIGNUP]: undefined;
 };
 
 const Stack = createStackNavigator<AuthStackParamList>();
@@ -18,37 +18,38 @@ function AuthStackNavigator() {
     <Stack.Navigator
       screenOptions={{
         cardStyle: {
-          backgroundColor: 'white',
+          backgroundColor: "white",
         },
         headerStyle: {
-          shadowColor: 'gray',
-          backgroundColor: 'white',
+          shadowColor: "gray",
+          backgroundColor: "white",
         },
         headerTitleStyle: {
           fontSize: 15,
         },
-        headerTintColor: 'black',
-      }}>
+        headerTintColor: "black",
+      }}
+    >
       <Stack.Screen
-        name={authNaviagtions.AUTH_HOME}
+        name={authNavigations.AUTH_HOME}
         component={AuthHomeScreen}
         options={{
-          headerTitle: ' ',
+          headerTitle: " ",
           headerShown: false,
         }}
       />
       <Stack.Screen
-        name={authNaviagtions.LOGIN}
+        name={authNavigations.LOGIN}
         component={LoginScreen}
         options={{
-          headerTitle: '로그인',
+          headerTitle: "로그인",
         }}
       />
       <Stack.Screen
-        name={authNaviagtions.SIGNUP}
+        name={authNavigations.SIGNUP}
         component={SignScreen}
         options={{
-          headerTitle: '회원가입',
+          headerTitle: "회원가입",
         }}
       />
     </Stack.Navigator>

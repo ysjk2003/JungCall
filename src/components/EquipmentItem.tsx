@@ -3,20 +3,20 @@ import {
   Dimensions,
   Image,
   Platform,
-  Pressable,
   StyleSheet,
   Text,
   View,
 } from "react-native";
-import { Company } from "../types";
+import { Pressable } from "react-native-gesture-handler";
+import { Equipment } from "../types";
 import { colors } from "../constants";
 
 type Props = {
-  item: Company;
+  item: Equipment;
   onPress: () => void;
 };
 
-function CompanyItem(props: Props) {
+function EquipmentItem(props: Props) {
   return (
     <Pressable style={styles.container} onPress={props.onPress}>
       <View style={styles.innerContainer}>
@@ -37,14 +37,15 @@ function CompanyItem(props: Props) {
         )}
         {props.item.image === undefined && (
           <View style={[styles.imageContainer, styles.emptyImageContainer]}>
-            <Text style={styles.locationText}>No Image</Text>
+            <Text style={styles.text}>No Image</Text>
           </View>
         )}
 
         <View style={styles.textContainer}>
           <Text style={styles.nameText}>{props.item.name}</Text>
-          <Text style={styles.phoneText}>{props.item.phone}</Text>
-          <Text style={styles.locationText}>{props.item.location}</Text>
+          <Text style={styles.priceText}>
+            시간당 단가: {props.item.pricePerHour}
+          </Text>
         </View>
       </View>
     </Pressable>
@@ -89,13 +90,13 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontSize: 14,
   },
-  phoneText: {
+  priceText: {
     fontWeight: "500",
     fontSize: 12,
   },
-  locationText: {
+  text: {
     fontSize: 13,
   },
 });
 
-export default CompanyItem;
+export default EquipmentItem;
