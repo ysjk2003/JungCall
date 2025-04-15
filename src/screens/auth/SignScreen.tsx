@@ -1,20 +1,28 @@
-import React, {useRef} from 'react';
-import {SafeAreaView, StyleSheet, TextInput, View} from 'react-native';
-import InputField from '../../components/InputField';
-import useForm from '../../hooks/useForm';
-import CustomButton from '../../components/CustomButton';
-import {validateSignup} from '../../utils';
+import React, { useRef } from "react";
+import { SafeAreaView, StyleSheet, TextInput, View } from "react-native";
+import InputField from "../../components/InputField";
+import useForm from "../../hooks/useForm";
+import CustomButton from "../../components/CustomButton";
+import { validateSignup } from "../../utils";
+import useAuth from "../../hooks/queires/useAuth";
 
 function SignupScreen() {
+  const { signupMutation, loginMutation } = useAuth();
   const passwordRef = useRef<TextInput | null>(null);
   const passwordConfirmRef = useRef<TextInput | null>(null);
   const signup = useForm({
-    initialValue: {email: '', password: '', passwordConfirm: ''},
+    initialValue: { email: "", password: "", passwordConfirm: "" },
     validate: validateSignup,
   });
 
   const handleSubmit = () => {
-    console.log(signup.values);
+    const { email, password } = signup.values;
+    signupMutation.mutate(
+      { email, password },
+      {
+        onSuccess: () => loginMutation.mutate({ email, password }),
+      }
+    );
   };
 
   return (
@@ -27,9 +35,9 @@ function SignupScreen() {
           touched={signup.touched.email}
           inputMode="email"
           returnKeyType="next"
-          submitBehavior={'submit'}
+          submitBehavior={"submit"}
           onSubmitEditing={() => passwordRef.current?.focus()}
-          {...signup.getTextInputProps('email')}
+          {...signup.getTextInputProps("email")}
         />
         <InputField
           ref={passwordRef}
@@ -39,9 +47,9 @@ function SignupScreen() {
           touched={signup.touched.password}
           secureTextEntry
           returnKeyType="next"
-          submitBehavior={'submit'}
+          submitBehavior={"submit"}
           onSubmitEditing={() => passwordConfirmRef.current?.focus()}
-          {...signup.getTextInputProps('password')}
+          {...signup.getTextInputProps("password")}
         />
         <InputField
           ref={passwordConfirmRef}
@@ -51,7 +59,7 @@ function SignupScreen() {
           secureTextEntry
           returnKeyType="join"
           onSubmitEditing={handleSubmit}
-          {...signup.getTextInputProps('passwordConfirm')}
+          {...signup.getTextInputProps("passwordConfirm")}
         />
       </View>
       <CustomButton label="회원가입" onPress={handleSubmit} />

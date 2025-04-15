@@ -1242,6 +1242,8 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - react-native-encrypted-storage (4.0.3):
+    - React-Core
   - react-native-safe-area-context (5.3.0):
     - DoubleConversion
     - glog
@@ -1703,6 +1705,7 @@ DEPENDENCIES:
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
   - React-microtasksnativemodule (from `../node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)
+  - react-native-encrypted-storage (from `../node_modules/react-native-encrypted-storage`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-nativeconfig (from `../node_modules/react-native/ReactCommon`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
@@ -1812,6 +1815,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   React-microtasksnativemodule:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/microtasks"
+  react-native-encrypted-storage:
+    :path: "../node_modules/react-native-encrypted-storage"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   React-nativeconfig:
@@ -1913,6 +1918,7 @@ SPEC CHECKSUMS:
   React-logger: a11c709603e1a43c7a3d87746ab6981b21b7c5b5
   React-Mapbuffer: d126b87e242b2ad54c095c098cd73b18ebcf2798
   React-microtasksnativemodule: a68e53dbdea90ce0c96aa2566695141079c7dc5f
+  react-native-encrypted-storage: 569d114e329b1c2c2d9f8c84bcdbe4478dda2258
   react-native-safe-area-context: 1550432038745277e5ce44b4be1abb94306d8f68
   React-nativeconfig: a0ee536f9c1b8f2ba80fdf95aa4f2d6eb9b79510
   React-NativeModulesApple: d5ad8550bfa8ceae1590d88cfd37f30d41355890

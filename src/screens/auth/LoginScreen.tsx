@@ -1,19 +1,21 @@
-import React, {useRef} from 'react';
-import {SafeAreaView, StyleSheet, TextInput, View} from 'react-native';
-import InputField from '../../components/InputField';
-import CustomButton from '../../components/CustomButton';
-import useForm from '../../hooks/useForm';
-import {validateLogin} from '../../utils';
+import React, { useRef } from "react";
+import { SafeAreaView, StyleSheet, TextInput, View } from "react-native";
+import InputField from "../../components/InputField";
+import CustomButton from "../../components/CustomButton";
+import useForm from "../../hooks/useForm";
+import { validateLogin } from "../../utils";
+import useAuth from "../../hooks/queires/useAuth";
 
 function LoginScreen() {
+  const { loginMutation } = useAuth();
   const passwordRef = useRef<TextInput | null>(null);
   const login = useForm({
-    initialValue: {email: '', password: ''},
+    initialValue: { email: "", password: "" },
     validate: validateLogin,
   });
 
   const handleSubmit = () => {
-    console.log('login.values', login.values);
+    loginMutation.mutate(login.values);
   };
 
   return (
@@ -28,7 +30,7 @@ function LoginScreen() {
           returnKeyType="next"
           submitBehavior="submit"
           onSubmitEditing={() => passwordRef.current?.focus()}
-          {...login.getTextInputProps('email')}
+          {...login.getTextInputProps("email")}
         />
         <InputField
           ref={passwordRef}
@@ -38,7 +40,7 @@ function LoginScreen() {
           secureTextEntry
           returnKeyType="join"
           onSubmitEditing={handleSubmit}
-          {...login.getTextInputProps('password')}
+          {...login.getTextInputProps("password")}
         />
       </View>
       <CustomButton
