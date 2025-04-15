@@ -7,6 +7,7 @@ const authNavigations = {
 const mainNavigations = {
   COMPANY_LIST: "CompanyList",
   EQUIPMENT_LIST: "EquipmentList",
+  RESERVATION: "Reservation",
 };
 
 export { authNavigations, mainNavigations };

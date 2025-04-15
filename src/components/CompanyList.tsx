@@ -6,12 +6,12 @@ import { StackScreenProps } from "@react-navigation/stack";
 import { MainStackParamList } from "../navigation/stack/MainStackNavigator";
 import { mainNavigations } from "../constants";
 
-type AuthHomeScreenProps = StackScreenProps<
+type CompanyListProps = StackScreenProps<
   MainStackParamList,
   typeof mainNavigations.COMPANY_LIST
 >;
 
-function CompanyList({ navigation }: AuthHomeScreenProps) {
+function CompanyList({ navigation }: CompanyListProps) {
   const data: CompanyListType = [
     {
       id: "1",

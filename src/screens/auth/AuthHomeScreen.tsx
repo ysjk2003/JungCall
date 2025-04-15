@@ -16,11 +16,6 @@ function AuthHomeScreen({ navigation }: AuthHomeScreenProps) {
     <SafeAreaView style={styles.container}>
       <View style={styles.imageContainer}>
         <Text style={styles.appName}>중장비 콜</Text>
-        {/* <Image
-          resizeMode="contain"
-          style={styles.image}
-          source={require('../../assets/matzip.png')}
-        /> */}
       </View>
       <View style={styles.buttonContainer}>
         <CustomButton
