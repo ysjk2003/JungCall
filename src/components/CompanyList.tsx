@@ -1,10 +1,10 @@
 import React from "react";
 import { FlatList, StyleSheet } from "react-native";
 import CompanyItem from "./CompanyItem";
-import type { CompanyList as CompanyListType } from "../types";
 import { StackScreenProps } from "@react-navigation/stack";
 import { MainStackParamList } from "../navigation/stack/MainStackNavigator";
 import { mainNavigations } from "../constants";
+import { useGetCompany } from "../hooks/queires/useGetCompany";
 
 type CompanyListProps = StackScreenProps<
   MainStackParamList,
@@ -12,30 +12,20 @@ type CompanyListProps = StackScreenProps<
 >;
 
 function CompanyList({ navigation }: CompanyListProps) {
-  const data: CompanyListType = [
-    {
-      id: "1",
-      name: "제일지게차",
-      phone: "042-000-0000",
-      location: "대전광역시 대덕구",
-    },
-    {
-      id: "2",
-      name: "제일지게차",
-      phone: "042-000-0000",
-      location: "대전광역시 대덕구",
-    },
-  ];
+  const { data } = useGetCompany();
 
-  const handlePressItem = () => {
-    navigation.navigate(mainNavigations.EQUIPMENT_LIST);
+  const handlePressItem = (id: string) => {
+    navigation.navigate(mainNavigations.EQUIPMENT_LIST, { companyId: id });
   };
 
   return (
     <FlatList
       data={data}
       renderItem={(item) => (
-        <CompanyItem item={item.item} onPress={handlePressItem} />
+        <CompanyItem
+          item={item.item}
+          onPress={() => handlePressItem(item.item.id)}
+        />
       )}
       keyExtractor={(item) => item.id}
       contentContainerStyle={styles.contentContainer}

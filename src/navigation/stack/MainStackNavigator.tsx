@@ -7,7 +7,7 @@ import ReservationScreen from "../../screens/reservation/ReservationScreen";
 
 export type MainStackParamList = {
   [mainNavigations.COMPANY_LIST]: undefined;
-  [mainNavigations.EQUIPMENT_LIST]: undefined;
+  [mainNavigations.EQUIPMENT_LIST]: { companyId: string };
   [mainNavigations.RESERVATION]: undefined;
 };
 

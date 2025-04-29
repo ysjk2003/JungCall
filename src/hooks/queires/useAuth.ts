@@ -21,6 +21,7 @@ import type {
   UseMutationCustomOptions,
   UseQueryCustomOptions,
 } from "../../types/common";
+import { Alert } from "react-native";
 
 function useSignup(mutationOptions?: UseMutationCustomOptions) {
   return useMutation({
@@ -35,6 +36,14 @@ function useLogin(mutationOptions?: UseMutationCustomOptions) {
     onSuccess: ({ accessToken, refreshToken }) => {
       setHeader("Authorization", `Bearer ${accessToken}`);
       setEncryptStorage(storageKeys.REFRESH_TOKEN, refreshToken);
+    },
+    onError: ({ status }) => {
+      if (status === 429) {
+        Alert.alert(
+          "로그인 시도 횟수 초과",
+          "로그인에 5회 이상 실패하였습니다. 30분 후 재시도 할 수 있습니다."
+        );
+      }
     },
     onSettled: () => {
       queryClient.refetchQueries({
